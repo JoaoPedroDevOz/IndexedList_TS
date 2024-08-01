@@ -1,4 +1,6 @@
+import { Transacoes } from './transacoes';
 import NodeIList from "./NodeIList";
+import { Transacao } from "./transacao";
 
 class List {
     head: any;
@@ -6,7 +8,7 @@ class List {
         this.head = null;
     }
 
-    searchElement(element: string | number): Boolean {
+    searchElement(element: Transacao): Boolean {
         let pointer: any = this.head;
 
         while (pointer && element != pointer.element) {
@@ -15,26 +17,24 @@ class List {
         return pointer;
     }
 
-    insertingValues(array: string[] | number[]): Boolean {
-        array.forEach(element => {
-            if (this.searchElement(element)) {
-                return false;
-            } 
-            let newNode = new NodeIList(element)
+    insertingValues(element: Transacao): Boolean {
+        if (this.searchElement(element)) {
+            return false;
+        }
+        let newNode = new NodeIList(element)
 
-            if (!this.head || element < this.head.element) {
-                newNode.next = this.head;
-                this.head = newNode;
-            } 
-            else {
-                let pointer = this.head;
-                while(pointer.next && element > pointer.next.element) {
-                    pointer = pointer.next;
-                }
-                newNode.next = pointer.next;
-                pointer.next = newNode;
+        if (!this.head || element.id < this.head.element.id) {
+            newNode.next = this.head;
+            this.head = newNode;
+        } 
+        else {
+            let pointer = this.head;
+            while(pointer.next && element.id > pointer.next.element.id) {
+                pointer = pointer.next;
             }
-        });
+            newNode.next = pointer.next;
+            pointer.next = newNode;
+        }
         return true;
     }
 
@@ -46,7 +46,7 @@ class List {
         }
     }
 
-    removeValues(element: string | number) {
+    removeValues(element: Transacao) {
         if (!this.searchElement(element)) {
             return false;
         }
@@ -63,11 +63,27 @@ class List {
             }
         }
         return true;
-    }
-}
+    };
+};
 
-const lista1 = new List
-let arrayword = ["arroz", "feijao", "açucar", "arroz"]
-lista1.insertingValues(arrayword)
-lista1.removeValues("açucar")
-lista1.printList()
+// const lista1 = new List;
+const array: Transacao = new Transacao(1, "joão", 200, "Depósito");
+const array2: Transacao = new Transacao(2, "pedro", 200, "Depósito");
+const array3: Transacao = new Transacao(3, "dany", 200, "Depósito");
+const array4: Transacao = new Transacao(4, "lu", 200, "Transferência");
+
+
+// lista1.insertingValues(array);
+// lista1.insertingValues(array2);
+// lista1.insertingValues(array3);
+// lista1.removeValues(array2);
+// lista1.printList();
+
+const lista2 = new Transacoes
+lista2.add(array)
+lista2.add (array2)
+lista2.add (array3)
+lista2.add (array4)
+
+lista2.listaDepositos()
+lista2.listaTranferencias()

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form-LearningTS</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1 id="text-center">Formulário</h1>
+    <br>
+    <br>
+    <section>
+        <form action="submit">
+            <div class="form-container">
+                <div class="form-container-group">
+                    <label for="nome">Nome: </label>
+                    <input type="text" name="name" id="nome" class="form-controls" placeholder="nome" >
+                </div>
+                <br>
+                <br>
+                <div class="form-container-group">
+                    <label for="data">Data de nascimento: </label>
+                    <input type="date" name="date" id="data" class="form-controls" >
+                </div>
+            </div>
+            <div class="form-container">
+                <div class="form-container-group">
+                    <label for="valor">Valor: </label>
+                    <input type="number" name="value" id="valor" class="form-controls">
+                </div>
+                <br>
+                <br>
+                <div class="form-container-group">
+                    <label for="tipotransacao">Tipo da Transação: </label>
+                    <select name="tipoTransacao" id="tipoTransacao" id="tipotransacao" class="campo-input" required>
+                        <option value="">Selecione o tipo de transação</option>
+                        <option value="Depósito">Depósito</option>
+                        <option value="Transferência">Transferência</option>
+                        <option value="Pagamento de Boleto">Pagamento de Boleto</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <button type="submit" class="btn-submit">Concluir Transação</button>
+
+    </section>
+</body>
+</html>

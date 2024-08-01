@@ -1,7 +1,8 @@
+import { Transacao } from './transacao';
 export default class NodeIList {
-    element: string | number;
+    element: Transacao;
     next: null;
-    constructor(element: string | number) {
+    constructor(element: Transacao) {
         this.element = element;
         this.next = null;
     }
